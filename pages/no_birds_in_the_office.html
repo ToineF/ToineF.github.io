@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+  <head>
+    <title>Portefolio Antoine Foucault</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <noscript
+      ><link rel="stylesheet" href="../assets/css/noscript.css"
+    /></noscript>
+  </head>
+  <body class="is-preload">
+    <!-- Wrapper -->
+    <div id="wrapper">
+      <!-- Header -->
+      <header id="header">
+        <div class="inner">
+          <!-- Logo -->
+          <a href="../index.html" class="logo"
+            ><span class="title">Return to Home</span>
+          </a>
+
+          <!-- Nav -->
+          <nav>
+            <ul>
+              <li><a href="#menu">Menu</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+       <!-- Menu -->
+      <nav id="menu">
+        <h2>Menu</h2>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="blown_away.html">Blown Away</a></li>
+          <li><a href="no_birds_in_the_office.html">No Birds in the Office</a></li>
+          <li><a href="../elements.html">Elements</a></li>
+        </ul>
+      </nav>
+
+      <!-- Main -->
+      <div id="main">
+        <div class="inner">
+          <h1>No Birds in the Office</h1>
+          <ul class="icons">
+            <li>
+              <a
+              href="https://antoine-foucault.itch.io/no-birds-in-the-office"
+              target=”_blank”
+              class="icon brands style2 fa-itch-io"
+              ><span class="label">Itch.io</span></a
+              >
+            </li>
+          </ul>
+          <h2>The project</h2>
+          <p>
+            It was <u>a normal day of work for John.</u> Everything was going as usual.
+            <br>But then... <u>A goose appeared.</u>
+            <br>The company policy was clear : <u>No birds in the office!</u>
+          </p>
+          <div class="container"><iframe width="840" height="430" allowfullscreen src="https://www.youtube.com/embed/m3UIlWaF1IY"></iframe>
+          </div>
+          <br><br><br>
+
+          <h2>Context</h2>
+          <div>
+            <p>
+            This was a <u>1 month project</u> loosely inspired by the game <u>Vampire Survivors</u>, made in <u>a team of 2</u>.
+            <br>We wanted to have fun with this project, make something hysterical, and a ton of birds invading an office building seemed funny to us.
+            <br>
+            <br><u>Team:</u>
+            <br><u>Gaëlle Becel</u> - 2D/3D Art, VFX
+            <br><u>Antoine Foucault</u> - Programming, Ragdoll, Level Design, Sound Design, Trailer
+          </p>
+          </div>
+          <br><br><br>
+          <h2>My role</h2>
+          <p>
+            Since our main goal with this project was to have a <u>funny game</u>, everything we did needed to go in that direction.
+            <br>Since we were only two on the team we each had to wear different hats. My main tasks were programming and level design.
+            <br><u>Level Designer :</u> I made tight levels, with a lot of props with physics to make armies of birds coming to chase the player really chaotic and funny.
+            <br><u>Programmer :</u> <u>Ragdolls</u> were a must to us, so it was my absolute priority to work on that.
+          </p>
+          <br><br><br>
+
+          <h2>Ragdolls</h2>
+          <p>To properly use ragdolls in our game, I needed to work on two aspects:
+            <ul>
+              <li>Limiting the ragdoll to the visual of the player, and have no effect on their movement, nor making the game collisions bug.</li>
+              <p>This one was pretty simple, I just needed to make sure to lock the ragdoll spine to the player's center, and properly set up the Physics Matrix.</p>
+              <li>Making a <u>tool to easily make animated ragdolls</u>.</li>
+              <p>First, I made an an animated ragdoll with a placeholder model.
+                <br>To do that, I have two models, one with the animations (which can be hidden), and the other which takes the rotations of the joints of the animated model, while keeping the ragdoll physics.
+            </ul>
+          </p>
+          <div class="container">
+            <video controls playsinline autoplay muted loop>
+              <source src="../videos/no_birds_in_the_office_ragdoll_movement.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video> 
+          </div>
+            <div class="container">
+              <video controls playsinline autoplay muted loop>
+                <source src="../videos/no_birds_in_the_office_ragdoll_animated.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video> 
+            </div>
+            <p>This worked great for what we wanted, but the process of making it was too long, and needed to be <u>automated</u>, especially since we had multiple characters to ragdoll.
+             The goal was to build a tool that could easily go from the Unity default ragdoll with character joints to an animted one, like I had made with the placeholder asset.
+              <br>I spent some time on this tool, to ensure it was <u>easy of use</u> (only a few references to make and a button to click) and <u>reusable for other projects</u>.
+              <br>And this time was spend very well, as it made us gain a lot of time in the end.</p>
+              <div class="containerimage">
+              <img src="../images/no_birds_in_the_ragdoll_tool.png" alt="" class="image" />
+            </div>
+          </div>
+	  
+        </div>
+        <!-- Footer -->
+        <footer id="footer">
+          <div class="inner">
+            <section>
+              <h2>Contact</h2>
+              <ul class="icons">
+                <li>
+                  <a
+                    href="mailto:antoine.foucault777@gmail.com"
+                    class="icon solid style2 fa-envelope"
+                    ><span class="label">Email</span></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://antoine-foucault.itch.io/"
+                    class="icon brands style2 fa-itch-io"
+                    target=”_blank”
+                    ><span class="label">Itch.io</span></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://github.com/ToineF"
+                    class="icon brands style2 fa-github"
+                    target=”_blank”
+                    ><span class="label">Github</span></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://www.linkedin.com/in/antoine--foucault"
+                    target=”_blank”
+                    class="icon brands style2 fa-linkedin"
+                    ><span class="label">Linkedin</span></a
+                  >
+                </li>
+              </ul>
+              <ul>
+                <p>antoine.foucault777@gmail.com<br />+33 7 49 93 59 42</p>
+              </ul>
+            </section>
+            <ul class="copyright">
+              <li>&copy; Untitled. All rights reserved</li>
+              <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+            </ul>
+          </div>
+        </footer>      
+
+    <!-- Scripts -->
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/browser.min.js"></script>
+    <script src="../assets/js/breakpoints.min.js"></script>
+    <script src="../assets/js/util.js"></script>
+    <script src="../assets/js/main.js"></script>
+  </body>
+</html>
