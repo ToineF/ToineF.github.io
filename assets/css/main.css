@@ -354,6 +354,30 @@ h6 {
   }
 }
 
+
+ /* iframes */
+.container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 36.5%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+  margin-bottom: 3em;
+
+}
+
+
+  iframe, video {
+    position:absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 65%;
+  height: 100%;
+	transform: translate(35%, 0%);
+  border-radius: .5em;
+ }
+
 sub {
   font-size: 0.8em;
   position: relative;
@@ -2893,12 +2917,12 @@ body.is-touch .tiles article .content {
 
 @media screen and (max-width: 736px) {
   .tiles {
-    margin: -1.25em 0 0 -1.25em;
+    margin: -2.5em 0 0 -2.5em;
   }
 
   .tiles article {
-    width: calc(50% - 1.25em);
-    margin: 1.25em 0 0 1.25em;
+    width: calc(50% - 2.5em);
+    margin: 2.5em 0 0 2.5em;
   }
 
   .tiles article:hover > .image {
