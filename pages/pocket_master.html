@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+  <head>
+    <title>Portefolio Antoine Foucault</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <noscript
+      ><link rel="stylesheet" href="../assets/css/noscript.css"
+    /></noscript>
+  </head>
+  <body class="is-preload">
+    <!-- Wrapper -->
+    <div id="wrapper">
+      <!-- Header -->
+      <header id="header">
+        <div class="inner">
+          <!-- Logo -->
+          <a href="../index.html" class="logo"
+            ><span class="title">Return to Home</span>
+          </a>
+
+          <!-- Nav -->
+          <nav>
+            <ul>
+              <li><a href="#menu">Menu</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+       <!-- Menu -->
+       <nav id="menu">
+        <h2>Menu</h2>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="blown_away.html">Blown Away</a></li>
+          <li><a href="no_birds_in_the_office.html">No Birds in the Office</a></li>
+          <li><a href="pocket_master.html">The Pocket Master</a></li>
+          <li><a href="game_jams_team.html">Game Jams - Team</a></li>
+          <li><a href="game_jams_solo.html">Game Jams - Solo</a></li>
+          <li><a href="utilities.html">Utilities</a></li>
+        </ul>
+      </nav>
+
+      <!-- Main -->
+      <div id="main">
+        <div class="inner">
+          <h1>The Pocket Master</h1>
+          <ul class="icons">
+            <li>
+              <a
+              href="https://antoine-foucault.itch.io/the-pocket-master"
+              target=”_blank”
+              class="icon brands style2 fa-itch-io"
+              ><span class="label">Itch.io</span></a
+              >
+            </li>
+          </ul>
+          <h2>The project</h2>
+          <p>
+            As the <u>Pocket Master</u>, you job is to help people in need.
+            <br>Use your <u>magical pocket</u> to <u>change objects size</u> and please everyone!
+            <br>Pocket everything! Objects, people, entire rooms... The pocket world has no limit.
+          </p>
+          <div class="container"><iframe width="840" height="430" allowfullscreen src="https://www.youtube.com/embed/w8jGvxkh9Bk"></iframe>
+          </div>
+          <br><br><br>
+
+          <h2>Context</h2>
+          <div>
+            <p>
+            This was a <u>5 days long</u> game jam for the <u>GMTK Game Jam 2024</u> under the theme <u>Built to Scale</u>, made by myself.
+            I made a <u>2D puzzle game</u> about putting things in your pocket, and with the ability to swap the size of two elements.
+            <br>
+          </p>
+          </div>
+          <br><br><br>
+
+          <h2>Brainstorming</h2>
+          <p>
+            My process when finding ideas for game jams is very simple.
+            <br>I throw out as many ideas and words as possible, to have a large quantity of ideas. 
+            <br>Then I select with few favorites with 3 criterias:
+            <ul>
+              <li><u>Motivation</u> : How much the idea exictes me.
+              <li><u>Scope</u> : It must be feasible without crunching.
+              <li><u>Challenge</u> : I want to learn new things with each projects.
+            </ul>
+            <br>I develop the ones I selected.
+            <br>I then chose my favorite among them : That's my concept!
+          </p>
+          <br><br><br>
+
+          <h2>Organisation</h2>
+          <p>
+            It's really to me to stay organised when working, with priorities and deadlines.
+            <br>For this project, I used Milanote to keep track of everything (Todo lists, references, sketches).
+          </p>
+          <div class="center">
+            <img src="../images/pocket_master_milanote.png" alt="" class="image" />
+          </div>
+          <br><br><br>
+
+          <h2>Day 1</h2>
+          <p>
+              The first day of the jam was dedicated to brainstorming, planning and prototyping.
+              <br>Visually, I wanted to try something other than pixel art, but since my first test took me too long and was not as pretty as I hoped, I finally went to pixel art, still challenging myself by learning Aseprite during the jam.
+              <br>I made a quick mockup to quickly define what a screen of the game could look like.
+          </p>
+              <div class="center">
+                <img src="../images/pocket_master_first_art_test.png" alt="" class="image" />
+
+              <img src="../images/pocket_master_mockup.png" alt="" class="image" />
+            </div>
+            <p>But since I went with pixel art, another problem arose : Scaling.
+              <br>My game mechanic is about scaling things, and you definitively shouldn't scale pixel art.
+              <br>The simple solution : Make more assets.
+              <br>Since the art style allowed me to create really quickly assets, it was a perfect solution.
+            </p>
+            <div class="center">
+              <img src="../images/pocket_master_pixel_art.png" alt="" class="image" />
+            </div>
+            <p>Finally, I programmed a simple technical prototype by importing a drag 'n drop system I already made for another project.
+              <br>It's important to me to make reusable code, so I can gain time where I need it.
+            </p>
+            <br><br><br>
+
+          <h2>Day 2</h2>
+          <p>
+              The second day of the jam was dedicated to taking the visual and technical prototype further.
+              <br>I made the most important assets in the game, and had a playable game loop at the end of the day, with 2 puzzles to showcase the main mechanic.
+              <br>The only things left at this point is to make more content, and to polish everything.
+              <br>
+              <br>That day, I made a scalable way to make more puzzles, with data contained as scriptable objects.
+              <br>I used <u>Odin Inspector</u> to serialize dictionaries, to be able to edit them in the inspector.
+              <br>This was useful to assign different sprites for each character or object for different sizes.
+              <br>This was also a great way to make more puzzles without writing new code, which made the puzzle design integration process much smoother.
+          </p>
+              <div class="center">
+                <img src="../images/pocket_master_odin.png" alt="" class="image" />
+            </div>
+            <br><br><br>
+
+          <h2>Day 3</h2>
+          <p>
+              The third day I thought the game missed something.
+              <br>I thought the main mechanic could be developped further, so I brainstormed some ideas.
+              <br>The main focus of the game, the ability to swap the size of two obejcts was actually was I thought of that day.
+              <br>I took to time to make more levels, using that mechanic and realised it was a lot easier for me to have level design ideas.
+              <br>So, I shifted to focus of the game to go all out with this mechanic, since it was the things that brought the most fun in the game.
+              <br>
+              <br>On top of that, I made a cutscene system that day, to give more life to the puzzles by adding narration.
+              <div class="center">
+                <img src="../images/pocket_master_cutscenes.png" alt="" class="image" />
+            </div>
+          </p>
+            <br><br><br>
+
+            <h2>Day 4</h2>
+          <p>
+              The fourth day was the final day I gave myself the objective to complete the game.
+              <br>I made the sound design, and polished what was left.
+              <br>I added a tutorial for a better onboarding.
+              <br>I made a few more puzzles to have 8 puzzles in total.
+              <br>Finally, I published the game on <a href="https://antoine-foucault.itch.io/the-pocket-master">itch.io</a> since I wanted to avoid last-minute bugs or upload issues.
+              <div class="center">
+                <img src="../images/pocket_master_last_day.png" alt="" class="image" />
+            </div>
+          </p>
+            <br><br><br>
+
+            <h2>Day 5</h2>
+            <p>
+                The final day, I rested.
+                <br>I believe it's important to avoid crunch, which is quite frequent during game jams.
+            </p>
+            <br><br><br>
+
+            <h2>Conclusion</h2>
+            <p>
+              In the end, I'm proud of this project, since the game turned out great, and I learned a few things while developping it.
+              <br>I generally improved my programming, art and level design skills, while discovering new tools like Aseprite and Odin Inspector.
+              <br>I always enjoye game jams, they're a great way to have fun making short games, and to discuss with other creators.
+              <br><br>During the jam review period, I got a lot of positive feedbacks.
+              <br><u>The Pocket Master</u> ranked <u>18th</u> out of 7500 games overall. <u>17th</u> in style, <u>53th</u> in creativity, <u>70th</u> in enjoyement.
+              <br><br>I'll definitevely take part in more jams!
+            </p>
+
+          <div class="center"><a href="../index.html"><h2>Back to Home</h2></a></div>
+          </div>
+	  
+        </div>
+        <!-- Footer -->
+        <footer id="footer">
+          <div class="inner">
+            <section>
+              <h2>Contact</h2>
+              <ul class="icons">
+                <li>
+                  <a
+                    href="mailto:antoine.foucault777@gmail.com"
+                    class="icon solid style2 fa-envelope"
+                    ><span class="label">Email</span></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://antoine-foucault.itch.io/"
+                    class="icon brands style2 fa-itch-io"
+                    target=”_blank”
+                    ><span class="label">Itch.io</span></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://github.com/ToineF"
+                    class="icon brands style2 fa-github"
+                    target=”_blank”
+                    ><span class="label">Github</span></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://www.linkedin.com/in/antoine--foucault"
+                    target=”_blank”
+                    class="icon brands style2 fa-linkedin"
+                    ><span class="label">Linkedin</span></a
+                  >
+                </li>
+              </ul>
+              <ul>
+                <p>antoine.foucault777@gmail.com<br />+33 7 49 93 59 42</p>
+              </ul>
+            </section>
+            <ul class="copyright">
+              <li>&copy; Untitled. All rights reserved</li>
+              <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+            </ul>
+          </div>
+        </footer>      
+
+    <!-- Scripts -->
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/browser.min.js"></script>
+    <script src="../assets/js/breakpoints.min.js"></script>
+    <script src="../assets/js/util.js"></script>
+    <script src="../assets/js/main.js"></script>
+  </body>
+</html>

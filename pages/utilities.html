@@ -38,7 +38,7 @@
       </header>
 
        <!-- Menu -->
-       <nav id="menu">
+      <nav id="menu">
         <h2>Menu</h2>
         <ul>
           <li><a href="../index.html">Home</a></li>
@@ -54,11 +54,11 @@
       <!-- Main -->
       <div id="main">
         <div class="inner">
-          <h1>Blown Away</h1>
+          <h1>Utilities</h1>
           <ul class="icons">
             <li>
               <a
-              href="https://piktura.itch.io/blown-away"
+              href="https://antoine-foucault.itch.io/no-birds-in-the-office"
               target=”_blank”
               class="icon brands style2 fa-itch-io"
               ><span class="label">Itch.io</span></a
@@ -67,79 +67,71 @@
           </ul>
           <h2>The project</h2>
           <p>
-            <u>Blown Away</u> is a <u>3D exploration-platformer</u> taking place in a <u>floating city</u>, where buildings are hung to balloons. You play as a small child seeking for his friends in a hide 'n seek game, using his inflatable jacket to propel himself through the sky!
-            <br>Explore freely different districts, ranging from the industrial zone to the floating gardens of the Green District, and pass by the market to ride the Ferris Wheel!
+            It was <u>a normal day of work for John.</u> Everything was going as usual.
+            <br>But then... <u>A goose appeared.</u>
+            <br>The company policy was clear : <u>No birds in the office!</u>
           </p>
-          <div class="container"><iframe width="840" height="430" allowfullscreen src="https://www.youtube.com/embed/PMm8rfOGSfs"></iframe> 
+          <div class="container"><iframe width="840" height="430" allowfullscreen src="https://www.youtube.com/embed/m3UIlWaF1IY"></iframe>
           </div>
           <br><br><br>
 
           <h2>Context</h2>
           <div>
             <p>
-            This was the <u>final Bachelor project</u> at <a href="https://www.piktura.fr/" target=”_blank”>Piktura</a>, made in <u>7 months</u> with a team of <u>6 people</u>.
+            This was a <u>1 month project</u> loosely inspired by the game <u>Vampire Survivors</u>, made in <u>a team of 2</u>.
+            <br>We wanted to have fun with this project, make something hysterical, and a ton of birds invading an office building seemed funny to us.
             <br>
             <br><u>Team:</u>
-            <br><u>Antoine Foucault</u> - Lead, Creative Director, Programmer
-            <br><u>Ambre Laurent</u> - Gameplay Designer, Level Designer
-            <br><u>Henri Berteloot</u> - Sound Designer
-            <br><u>Julie Boyaval</u> - Character Artist
-            <br><u>Safran Reynaert</u> - Environment Artist, Artistic Director
-            <br><u>Naomie Halter</u> - Concept Artist, Texturing, Lighting, Key Art
+            <br><u>Gaëlle Becel</u> - 2D/3D Art, VFX
+            <br><u>Antoine Foucault</u> - Programming, Ragdoll, Level Design, Sound Design, Trailer
           </p>
           </div>
           <br><br><br>
           <h2>My role</h2>
           <p>
-            <u>Lead :</u> I was in charge of organising meetings with my team, planning our tasks and deadlines, and making big decisions when needed.
-            <br><u>Creative Director :</u> I was the creative director, at the root of the game idea, who <u>created and developped the concept</u> with the Game Designer.
-            <br><u>Programmer :</u> I was <u>the only programmer</u> of the team, my main tasks being the character controller and tools for my team.
+            Since our main goal with this project was to have a <u>funny game</u>, everything we did needed to go in that direction.
+            <br>Since we were only two on the team we each had to wear different hats. My main tasks were programming and level design.
+            <br><u>Level Designer :</u> I made tight levels, with a lot of props with physics to make armies of birds coming to chase the player really chaotic and funny.
+            <br><u>Programmer :</u> <u>Ragdolls</u> were a must to us, so it was my absolute priority to work on that.
           </p>
           <br><br><br>
 
-          <h2>Gameplay</h2>
-          <p> My gain task for this project was to make a fluid <u>3D-plateformer character controller</u>.
-            <br>This was a great way for me to go more in depth with code organisation, raycasts, cameras, rigidbodies and state-machines.
+          <h2>Ragdolls</h2>
+          <p>To properly use ragdolls in our game, I needed to work on two aspects:
+            <ul>
+              <li>Limiting the ragdoll to the visual of the player, and have no effect on their movement, nor making the game collisions bug.</li>
+              <p>This one was pretty simple, I just needed to make sure to lock the ragdoll spine to the player's center, and properly set up the Physics Matrix.</p>
+              <li>Making a <u>tool to easily make animated ragdolls</u>.</li>
+              <p>First, I made an an animated ragdoll with a placeholder model.
+                <br>To do that, I have two models, one with the animations (which can be hidden), and the other which takes the rotations of the joints of the animated model, while keeping the ragdoll physics.
+            </ul>
           </p>
           <div class="container">
             <video controls playsinline autoplay muted loop>
-              <source src="../videos/blown_away_walk.mp4" type="video/mp4">
+              <source src="../videos/no_birds_in_the_office_ragdoll_movement.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video> 
           </div>
-          <p>The main mechanic of the character is the ability to <u>propel himself upwards</u> using his inflatable jacket.
-            <br>We also wanted to have a <u>floaty character</u> feeling, so it was important for me to provide a lot of options to balance the character for the Game Designer. 
-          </p>
+          <p class="center">(On the left, the animated ragdoll, and on the right the original animated model)</p>
             <div class="container">
               <video controls playsinline autoplay muted loop>
-                <source src="../videos/blown_away_propel.mp4" type="video/mp4">
+                <source src="../videos/no_birds_in_the_office_ragdoll_animated.mp4" type="video/mp4">
                 Your browser does not support the video tag.
               </video> 
             </div>
+            <p>This worked great for what we wanted, but the process of making it was too long, and needed to be <u>automated</u>, especially since we had multiple characters to ragdoll.
+             The goal was to build a tool that could easily go from the Unity default ragdoll with character joints to an animted one, like I had made with the placeholder asset.
+              <br>I spent some time on this tool, to ensure it was <u>easy of use</u> (only a few references to make and a button to click) and <u>reusable for other projects</u>.
+              <br>And this time was spend very well, as it made us gain a lot of time in the end.</p>
+              <div class="center">
+              <img src="../images/no_birds_in_the_ragdoll_tool.png" alt="" class="image" />
+            </div>
             <br><br><br>
-          <h2>Tools</h2>
-          <p>
-            Since this game takes place in a floating city, we needed to have a lot of buildings.
-            <br>With the Environment Artist and the Level Designer of our team, we decided to create the buildings using tiles.
-            <br>To make them gain a lot of time when making the level design and level art, I built <u>a tool to easily generate buildings</u>.
-          </p>
-          <div class="container">
-            <video controls lplaysinline autoplay muted loop>
-              <source src="../videos/blown_away_tool.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video> 
-          </div>
-          <p>
-            It was important to make this 3D-tiling tool <u>approachable for everyone on the team</u>, so I made it as easy to use as possible.
-            <br>So, the tool only has <u>3 sliders to specify the 3D size of the building</u>, one button to generate the building and another button to erase the building if needed.
-            <br>While maintaining the simplicity of use of the tool, I could make more options being the scene, like random tiles for certain floors of the building, or another tool to regenerate all the buildings in a scene.
-          </p>
-          <br><br><br>
           <div class="center"><a href="../index.html"><h2>Back to Home</h2></a></div>
+          </div>
+	  
         </div>
-      </div>
-
-     	  <!-- Footer -->
+        <!-- Footer -->
         <footer id="footer">
           <div class="inner">
             <section>
@@ -187,7 +179,6 @@
             </ul>
           </div>
         </footer>      
-    </div>
 
     <!-- Scripts -->
     <script src="../assets/js/jquery.min.js"></script>
