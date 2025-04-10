@@ -37,7 +37,7 @@
         </div>
       </header>
 
-       <!-- Menu -->
+      <!-- Menu -->
       <nav id="menu">
         <h2>Menu</h2>
         <ul>
@@ -47,90 +47,224 @@
           <li><a href="pocket_master.html">The Pocket Master</a></li>
           <li><a href="game_jams_solo.html">Game Jams - Solo</a></li>
           <li><a href="game_jams_team.html">Game Jams - Team</a></li>
-          <li><a href="utilities.html">Utilities</a></li>
+          <li><a href="utilities.html">Tools</a></li>
+          <li><a href="rewind.html">Time-Rewind Mechanic</a></li>
         </ul>
       </nav>
 
       <!-- Main -->
       <div id="main">
         <div class="inner">
-          <h1>Rewind Mechanic</h1>
-          <ul class="icons">
-          </ul>
-          <br><br><br>
+          <h1>Time-Rewind Mechanic</h1>
+          <ul class="icons"></ul>
+          <br /><br /><br />
           <h2>The project</h2>
           <p>
-            The idea of this project was to make a <u>time-rewind mechanic</u> similar to <u>Braid</u> that could easily be added to existing scripts with few modifications.
-              <br>After making the mechanic the goal is also to research the ways to optimize this mechanic to handle as many objects as possible.
-          </p>
-          <br><br><br>
-          <h2>Gameplay</h2>
-          <p> My gain task for this project was to make a fluid <u>3D-plateformer character controller</u>.
-            <br>This was a great way for me to go more in depth with code organisation, raycasts, cameras, rigidbodies and state-machines.
+            The idea of this project was to make a
+            <u>time-rewind mechanic</u> similar to <u>Braid</u>'s, by taking the
+            approach to implement this mechanic to an already existing project,
+            with a system that isn't designed to support this mechanic. (as if
+            it was a special level in the game which is the only one to feature
+            this mechanic) <br />After making the mechanic the goal is also to
+            research the ways to optimize it to handle as many objects as
+            possible at the same time.
           </p>
           <div class="container">
-            <video controls playsinline autoplay loop>
-              <source src="../videos/rewind_mechanic_showoff.mp4" type="video/mp4">
+            <video controls playsinline muted autoplay loop>
+              <source
+                src="../videos/rewind_mechanic_showoff.mp4"
+                type="video/mp4"
+              />
               Your browser does not support the video tag.
-            </video> 
+            </video>
           </div>
-          <p>The main mechanic of the character is the ability to <u>propel himself upwards</u> using his inflatable jacket.
-            <br>We also wanted to have a <u>floaty character</u> feeling, so it was important for me to provide a lot of options to balance the character for the Game Designer. 
+          <br /><br /><br />
+          <h2>Overview</h2>
+          <p>
+            I began this project by making research, to find a
+            good way to approach time-rewinding, while keeping in mind several
+            aspects:
+            <ul>
+              <li><u>Determinism</u> : Everything should behave the same way every time we rewind time.
+              <li><u>Optimisation</u> : The solution should not cause significant performance issues.
+              <li><u>Code Structure</u> : Since the system wasn't originally built for this mechanic, the implementation needed to be layered on top of the existing systems without altering them.
+            </ul>
           </p>
-            <br><br><br>
-        
-          <div class="center"><a href="../index.html"><h2>Back to Home</h2></a></div>
+          
+          <p>
+            To talk a bit about the structure, the best solution I came across was to <u>record information</u> in an array about every object that could rewind time every frame*.
+            <br>This information could be for instance positions, rotations, velocities, color, specific variables...
+            <br>Then, when the time rewinds, we go through the array in reverse, applying the contained information to the recorded object, overwriting their values.
+
+
+            <br><i>* More on recording every frame in the <u>"Going Further"</u> part.</i>
+          </p>
+          <div class="center">
+            <img src="../images/rewind_mechanic_explication.png" alt="" class="image" />
+          </div>
+          <p class="center">A figure of a recorded object, with a position (red) and color (blue), which are stored in an array (purple).</p>
+          <p>
+            This theoric system is generic enough that it can be applied to most game engines with very little limitations.
+            <br>That's why I tried to prototype it using <u>Godot</u>, to prove this point, while studying the differences between Godot and Unity (which I'm more familiar with), especially from an optimisation and code structure standpoint.
+          </p>
+          <br /><br /><br />
+
+          <h2>Implementation</h2>
+          <p>
+            Another important part of this project was the fact I worked as if the mechanic was not planned from the start in a development standpoint, and needed to be <u>added later in the game</u>, as a secondary mechanic for a specific level.
+            <br>This meant <u>decoupling the game logic from the time-rewind logic</u>.
+            <br>To set up under these conditions, I used Kenny's 3D Platformer template, to have a base project with a set structure, that allowing me to <u>focus exclusively on the time-rewinding mechanic</u> within certain constraints.
+            <div class="center">
+              <img src="../images/rewind_kenny.png" alt="" class="image" />
+            </div>
+            
+            <br>The objective was to add the time-rewinding mechanic to this code, without altering its content nor its structure.
+            <br>The natural solution was a simple OOP principle: <u>composition</u>.
+            <br>
+            <br>I have a base "Rewind" class which implements some parameters:
+            <ul>
+              <li><u>Max Positions</u> : The maximum number of recordings in time, if we want to limit it.
+              <li><u>Record Frequency</u> : How often we should record.
+              <li><u>Rewind Speed</u> : A speed multiplier for timeScale during the rewind.
+            </ul>
+            <br>This generic class can then be implemented in children classes, which record specific parameters.
+            <div class="center">
+              <img src="../images/rewind_mechanic_class_explainations.PNG" alt="" class="image" />
+            </div>
+            <p class="center">Here, the "Player Rewind" class inherits from "Rewind" by implementing "record" and "rewind" specific behaviours.</p>
+            <br>
+            Each child class then <u>records a target object's information</u>, without directly modifying its script.
+            <br>For instance, the "Player Rewind" class is able to record information about the "Player" such as positions, rotations, mesh scale, velocities...
+            <br>
+            <br>This system allows the "Player Rewind" to be totally decoupled from the "Player" class. This means the mechanic is totally dependent on the "Player Rewind" class.
+            <br>Since the system is the same for every objects (falling platforms, coins, moving clouds), it is <u>easy to implement objects that can be rewound</u> (by implementing the "Rewind" class), but also objects that defy this time-rewind ability <u>and can't be rewound</u> (by simply not implementing any "Rewind" class on the object).
+            <br>This <u>flexible system</u> is a direct benefit of using composition.
+          </p>
+          <div class="container">
+            <video controls playsinline muted autoplay loop>
+              <source
+              src="../videos/rewind_mechanic_coin.mp4"
+              type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <p class="center">A video demonstrating a coin that can't be rewound, and one that can. Both can coexist by simply adding a script to the rewindable coin.</p>
+          
+          <p>On top of being able to rewind objects, it was important to be able to rewind the <u>music</u>.
+          <br>As for the objects, there is a "Music Rewinder" that follows the same principle.
+          <br>Only, instead of recording information, we just play an inverted music, and switch between them at the appropriate time.
+          <br>With a bit of <u>reverb</u> with Godot's audio bus system, the music really sells the time-rewinding effect, and makes the mechanic more convincing.
+        </p>
+        <div class="container">
+            <video controls playsinline loop>
+              <source
+                src="../videos/rewind_mechanic_music.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <br /><br /><br />
+
+          <h2>Going further</h2>
+          <p>
+            Making this mechanic is great, but now there are severals important points to consider.
+            <br>The first, and the biggest issue is the <u>optimisation</u>.
+            <br>For games with few objects in the scene at once, this is fine in itself.
+            <br>But as is it, this naive approach could cause performance issue with a lot more objects in the scene.
+            <br>There are several ways to easily optimise this mechanic, like by not recording at every frame:
+            <ul>
+              <li><u>Less frequent recording</u> : We don't need to record every frame. Instead, we can record every other frame and interpolate the values to create the illusion that every frame was recorded.
+              <li><u>Recording only when the data changes</u> : Reduce greatly the recording information for objects that don't change or move often.
+              <li><u>Recording only deltas</u> : For potential big values such as velocity, we can only record the difference with the last value to record smaller variables.
+            </ul>
+          </p>
+          <div class="center">
+            <img src="../images/rewind_mechanic_profiler_general.png" alt="" class="image" />
+          </div>
+          <div class="center">
+            <img src="../images/rewind_mechanic_profiler_scripts.png" alt="" class="image" />
+          </div>
+          <p class="center">Godot's profiler for the naive approach, where the recording doesn't cost much yet compared to other physics tasks.</p>
+          <br>
+          <p>Another important aspect to consider I presented at the start that I still haven't touched on is <u>determinism</u>.
+          <br>It's critical that rewinding doesn't alter how the game plays when time resumes.
+          <br>To start with, we can <u>record everything in the physics update</u>, which is frame rate-independant. (FixedUpdate in Unity, _physics_process in Godot)
+          <br>If we want to go further, it's important to also keep in mind that moving objects using the physics engine is often not deterministic, so small changes can affect objects' movements. 
+          <br>In this case, the provided code was already deterministic, so it wasn't an issue, but t's something to watch out for in more complex scenarios.
+        </p>
+          <br /><br /><br />
+          <h2>Result</h2>
+          <p>To conclude, this project was very informative to me, allowing me to make this mechanic from scratch and to attach it to an existing project.
+          <br>Thinking about both the optimisation, determinism and code structure at the same time was a fun challenge too!
+          <br>Finally, making this in Godot and comparing it to Unity was educational, allowing me to learn more of the Godot engine (profiler, shader, audio bus...).
+          <br>Overall, I'm proud of the result:
+          </p>
+        <div class="container">
+            <video controls playsinline loop>
+              <source
+                src="../videos/rewind_mechanic_showoff.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <br /><br /><br />
+          <div class="center">
+            <a href="../index.html"><h2>Back to Home</h2></a>
+          </div>
         </div>
       </div>
 
-     	  <!-- Footer -->
-        <footer id="footer">
-          <div class="inner">
-            <section>
-              <h2>Contact</h2>
-              <ul class="icons">
-                <li>
-                  <a
-                    href="mailto:antoine.foucault777@gmail.com"
-                    class="icon solid style2 fa-envelope"
-                    ><span class="label">Email</span></a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="https://antoine-foucault.itch.io/"
-                    class="icon brands style2 fa-itch-io"
-                    target=”_blank”
-                    ><span class="label">Itch.io</span></a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="https://github.com/ToineF"
-                    class="icon brands style2 fa-github"
-                    target=”_blank”
-                    ><span class="label">Github</span></a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="https://www.linkedin.com/in/antoine--foucault"
-                    target=”_blank”
-                    class="icon brands style2 fa-linkedin"
-                    ><span class="label">Linkedin</span></a
-                  >
-                </li>
-              </ul>
-              <ul>
-                <p>antoine.foucault777@gmail.com<br />+33 7 49 93 59 42</p>
-              </ul>
-            </section>
-            <ul class="copyright">
-              <li>&copy; Untitled. All rights reserved</li>
-              <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+      <!-- Footer -->
+      <footer id="footer">
+        <div class="inner">
+          <section>
+            <h2>Contact</h2>
+            <ul class="icons">
+              <li>
+                <a
+                  href="mailto:antoine.foucault777@gmail.com"
+                  class="icon solid style2 fa-envelope"
+                  ><span class="label">Email</span></a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://antoine-foucault.itch.io/"
+                  class="icon brands style2 fa-itch-io"
+                  target="”_blank”"
+                  ><span class="label">Itch.io</span></a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://github.com/ToineF"
+                  class="icon brands style2 fa-github"
+                  target="”_blank”"
+                  ><span class="label">Github</span></a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.linkedin.com/in/antoine--foucault"
+                  target="”_blank”"
+                  class="icon brands style2 fa-linkedin"
+                  ><span class="label">Linkedin</span></a
+                >
+              </li>
             </ul>
-          </div>
-        </footer>      
+            <ul>
+              <p>antoine.foucault777@gmail.com<br />+33 7 49 93 59 42</p>
+            </ul>
+          </section>
+          <ul class="copyright">
+            <li>&copy; Untitled. All rights reserved</li>
+            <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+          </ul>
+        </div>
+      </footer>
     </div>
 
     <!-- Scripts -->
