@@ -61,7 +61,7 @@
           <h2>The project</h2>
           <p>
             The idea of this project was to make a
-            <u>time-rewind mechanic</u> similar to <u>Braid</u>'s, by taking the
+            <b>time-rewind mechanic</b> similar to <b>Braid</b>'s, by taking the
             approach to implement this mechanic to an already existing project,
             with a system that isn't designed to support this mechanic. (as if
             it was a special level in the game which is the only one to feature
@@ -92,12 +92,12 @@
           </p>
           
           <p>
-            To talk a bit about the structure, the best solution I came across was to <u>record information</u> in an array about every object that could rewind time every frame*.
+            To talk a bit about the structure, the best solution I came across was to <b>record information</b> in an array about every object that could rewind time every frame*.
             <br>This information could be for instance positions, rotations, velocities, color, specific variables...
             <br>Then, when the time rewinds, we go through the array in reverse, applying the contained information to the recorded object, overwriting their values.
 
 
-            <br><i>* More on recording every frame in the <u>"Going Further"</u> part.</i>
+            <br><i>* More on recording every frame in the <b>"Going Further"</b> part.</i>
           </p>
           <div class="center">
             <img src="../images/rewind_mechanic_explication.png" alt="" class="image" />
@@ -105,21 +105,21 @@
           <p class="center">A figure of a recorded object, with a position (red) and color (blue), which are stored in an array (purple).</p>
           <p>
             This theoric system is generic enough that it can be applied to most game engines with very little limitations.
-            <br>That's why I tried to prototype it using <u>Godot</u>, to prove this point, while studying the differences between Godot and Unity (which I'm more familiar with), especially from an optimisation and code structure standpoint.
+            <br>That's why I tried to prototype it using <b>Godot</b>, to prove this point, while studying the differences between Godot and Unity (which I'm more familiar with), especially from an optimisation and code structure standpoint.
           </p>
           <br /><br /><br />
 
           <h2>Implementation</h2>
           <p>
-            Another important part of this project was the fact I worked as if the mechanic was not planned from the start in a development standpoint, and needed to be <u>added later in the game</u>, as a secondary mechanic for a specific level.
-            <br>This meant <u>decoupling the game logic from the time-rewind logic</u>.
-            <br>To set up under these conditions, I used Kenny's 3D Platformer template, to have a base project with a set structure, that allowing me to <u>focus exclusively on the time-rewinding mechanic</u> within certain constraints.
+            Another important part of this project was the fact I worked as if the mechanic was not planned from the start in a development standpoint, and needed to be <b>added later in the game</b>, as a secondary mechanic for a specific level.
+            <br>This meant <b>decoupling the game logic from the time-rewind logic</b>.
+            <br>To set up under these conditions, I used Kenny's 3D Platformer template, to have a base project with a set structure, that allowing me to <b>focus exclusively on the time-rewinding mechanic</b> within certain constraints.
             <div class="center">
               <img src="../images/rewind_kenny.png" alt="" class="image" />
             </div>
             
             <br>The objective was to add the time-rewinding mechanic to this code, without altering its content nor its structure.
-            <br>The natural solution was a simple OOP principle: <u>composition</u>.
+            <br>The natural solution was a simple OOP principle: <b>composition</b>.
             <br>
             <br>I have a base <code>Rewind</code> class which implements some parameters:
             <ul>
@@ -133,12 +133,12 @@
             </div>
             <p class="center">Here, the <code>Player Rewind</code> class inherits from <code>Rewind</code> by implementing record and rewind specific behaviours.</p>
             <br>
-            Each child class then <u>records a target object's information</u>, without directly modifying its script.
+            Each child class then <b>records a target object's information</b>, without directly modifying its script.
             <br>For instance, the <code>Player Rewind</code> class is able to record information about the <code>Player</code> such as positions, rotations, mesh scale, velocities...
             <br>
             <br>This system allows the <code>Player Rewind</code> to be totally decoupled from the <code>Player</code> class. This means the mechanic is totally dependent on the <code>Player Rewind</code> class.
-            <br>Since the system is the same for every objects (falling platforms, coins, moving clouds), it is <u>easy to implement objects that can be rewound</u> (by implementing the <code>Rewind</code> class), but also objects that defy this time-rewind ability <u>and can't be rewound</u> (by simply not implementing any <code>Rewind</code> class on the object).
-            <br>This <u>flexible system</u> is a direct benefit of using composition.
+            <br>Since the system is the same for every objects (falling platforms, coins, moving clouds), it is <b>easy to implement objects that can be rewound</b> (by implementing the <code>Rewind</code> class), but also objects that defy this time-rewind ability <b>and can't be rewound</b> (by simply not implementing any <code>Rewind</code> class on the object).
+            <br>This <b>flexible system</b> is a direct benefit of using composition.
           </p>
           <div class="container">
             <video controls playsinline muted autoplay loop>
@@ -151,10 +151,10 @@
           </div>
           <p class="center">A video demonstrating a coin that can't be rewound, and one that can. Both can coexist by simply adding a script to the rewindable coin.</p>
           
-          <p>On top of being able to rewind objects, it was important to be able to rewind the <u>music</u>.
+          <p>On top of being able to rewind objects, it was important to be able to rewind the <b>music</b>.
           <br>As for the objects, there is a <code>Music Rewinder</code> that follows the same principle.
           <br>Only, instead of recording information, we just play an inverted music, and switch between them at the appropriate time.
-          <br>With a bit of <u>reverb</u> with Godot's audio bus system, the music really sells the time-rewinding effect, and makes the mechanic more convincing.
+          <br>With a bit of <b>reverb</b> with Godot's audio bus system, the music really sells the time-rewinding effect, and makes the mechanic more convincing.
         </p>
         <div class="container">
             <video controls playsinline loop>
@@ -170,7 +170,7 @@
           <h2>Going further</h2>
           <p>
             Making this mechanic is great, but now there are severals important points to consider.
-            <br>The first, and the biggest issue is the <u>optimisation</u>.
+            <br>The first, and the biggest issue is the <b>optimisation</b>.
             <br>For games with few objects in the scene at once, this is fine in itself.
             <br>But as is it, this naive approach could cause performance issue with a lot more objects in the scene.
             <br>There are several ways to easily optimise this mechanic, like by not recording at every frame:
@@ -188,9 +188,9 @@
           </div>
           <p class="center">Godot's profiler for the naive approach, where the recording doesn't cost much yet compared to other physics tasks.</p>
           <br>
-          <p>Another important aspect to consider I presented at the start that I still haven't touched on is <u>determinism</u>.
+          <p>Another important aspect to consider I presented at the start that I still haven't touched on is <b>determinism</b>.
           <br>It's critical that rewinding doesn't alter how the game plays when time resumes.
-          <br>To start with, we can <u>record everything in the physics update</u>, which is frame rate-independant. (<code>FixedUpdate</code> in Unity, <code>_physics_process</code> in Godot)
+          <br>To start with, we can <b>record everything in the physics update</b>, which is frame rate-independant. (<code>FixedUpdate</code> in Unity, <code>_physics_process</code> in Godot)
           <br>If we want to go further, it's important to also keep in mind that moving objects using the physics engine is often not deterministic, so small changes can affect objects' movements. 
           <br>In this case, the provided code was already deterministic, so it wasn't an issue, but t's something to watch out for in more complex scenarios.
         </p>
