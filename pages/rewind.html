@@ -121,7 +121,7 @@
             <br>The objective was to add the time-rewinding mechanic to this code, without altering its content nor its structure.
             <br>The natural solution was a simple OOP principle: <u>composition</u>.
             <br>
-            <br>I have a base "Rewind" class which implements some parameters:
+            <br>I have a base <code>Rewind</code> class which implements some parameters:
             <ul>
               <li><u>Max Positions</u> : The maximum number of recordings in time, if we want to limit it.
               <li><u>Record Frequency</u> : How often we should record.
@@ -131,13 +131,13 @@
             <div class="center">
               <img src="../images/rewind_mechanic_class_explainations.PNG" alt="" class="image" />
             </div>
-            <p class="center">Here, the "Player Rewind" class inherits from "Rewind" by implementing "record" and "rewind" specific behaviours.</p>
+            <p class="center">Here, the <code>Player Rewind</code> class inherits from <code>Rewind</code> by implementing record and rewind specific behaviours.</p>
             <br>
             Each child class then <u>records a target object's information</u>, without directly modifying its script.
-            <br>For instance, the "Player Rewind" class is able to record information about the "Player" such as positions, rotations, mesh scale, velocities...
+            <br>For instance, the <code>Player Rewind</code> class is able to record information about the <code>Player</code> such as positions, rotations, mesh scale, velocities...
             <br>
-            <br>This system allows the "Player Rewind" to be totally decoupled from the "Player" class. This means the mechanic is totally dependent on the "Player Rewind" class.
-            <br>Since the system is the same for every objects (falling platforms, coins, moving clouds), it is <u>easy to implement objects that can be rewound</u> (by implementing the "Rewind" class), but also objects that defy this time-rewind ability <u>and can't be rewound</u> (by simply not implementing any "Rewind" class on the object).
+            <br>This system allows the <code>Player Rewind</code> to be totally decoupled from the <code>Player</code> class. This means the mechanic is totally dependent on the <code>Player Rewind</code> class.
+            <br>Since the system is the same for every objects (falling platforms, coins, moving clouds), it is <u>easy to implement objects that can be rewound</u> (by implementing the <code>Rewind</code> class), but also objects that defy this time-rewind ability <u>and can't be rewound</u> (by simply not implementing any <code>Rewind</code> class on the object).
             <br>This <u>flexible system</u> is a direct benefit of using composition.
           </p>
           <div class="container">
@@ -152,7 +152,7 @@
           <p class="center">A video demonstrating a coin that can't be rewound, and one that can. Both can coexist by simply adding a script to the rewindable coin.</p>
           
           <p>On top of being able to rewind objects, it was important to be able to rewind the <u>music</u>.
-          <br>As for the objects, there is a "Music Rewinder" that follows the same principle.
+          <br>As for the objects, there is a <code>Music Rewinder</code> that follows the same principle.
           <br>Only, instead of recording information, we just play an inverted music, and switch between them at the appropriate time.
           <br>With a bit of <u>reverb</u> with Godot's audio bus system, the music really sells the time-rewinding effect, and makes the mechanic more convincing.
         </p>
@@ -190,7 +190,7 @@
           <br>
           <p>Another important aspect to consider I presented at the start that I still haven't touched on is <u>determinism</u>.
           <br>It's critical that rewinding doesn't alter how the game plays when time resumes.
-          <br>To start with, we can <u>record everything in the physics update</u>, which is frame rate-independant. (FixedUpdate in Unity, _physics_process in Godot)
+          <br>To start with, we can <u>record everything in the physics update</u>, which is frame rate-independant. (<code>FixedUpdate</code> in Unity, <code>_physics_process</code> in Godot)
           <br>If we want to go further, it's important to also keep in mind that moving objects using the physics engine is often not deterministic, so small changes can affect objects' movements. 
           <br>In this case, the provided code was already deterministic, so it wasn't an issue, but t's something to watch out for in more complex scenarios.
         </p>
