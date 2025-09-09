@@ -192,7 +192,7 @@
           <br>It's critical that rewinding doesn't alter how the game plays when time resumes.
           <br>To start with, we can <b>record everything in the physics update</b>, which is frame rate-independant. (<code>FixedUpdate</code> in Unity, <code>_physics_process</code> in Godot)
           <br>If we want to go further, it's important to also keep in mind that moving objects using the physics engine is often not deterministic, so small changes can affect objects' movements. 
-          <br>In this case, the provided code was already deterministic, so it wasn't an issue, but t's something to watch out for in more complex scenarios.
+          <br>In this case, the provided code was already deterministic, so it wasn't an issue, but it's something to watch out for in more complex scenarios.
         </p>
           <br /><br /><br />
           <h2>Result</h2>
