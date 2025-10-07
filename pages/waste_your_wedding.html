@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+  <head>
+    <title>Portefolio Antoine Foucault</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <noscript
+      ><link rel="stylesheet" href="../assets/css/noscript.css"
+    /></noscript>
+  </head>
+  <body class="is-preload">
+    <!-- Wrapper -->
+    <div id="wrapper">
+      <!-- Header -->
+      <header id="header">
+        <div class="inner">
+          <!-- Logo -->
+          <a href="../index.html" class="logo"
+            ><span class="title">Return to Home</span>
+          </a>
+
+          <!-- Nav -->
+          <nav>
+            <ul>
+              <li><a href="#menu">Menu</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      <!-- Menu -->
+      <nav id="menu">
+        <h2>Menu</h2>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="blown_away.html">Blown Away</a></li>
+          <li>
+            <a href="waste_your_wedding.html">Waste Your Wedding</a>
+          </li>
+          <li><a href="pocket_master.html">The Pocket Master</a></li>
+          <li>
+            <a href="no_birds_in_the_office.html"
+              >No Birds in the Office</a
+            >
+          </li>
+          <li><a href="game_jams_solo.html">Game Jams - Solo</a></li>
+          <li><a href="game_jams_team.html">Game Jams - Team</a></li>
+          <li><a href="utilities.html">Tools</a></li>
+          <li><a href="rewind.html">Time-Rewind Mechanic</a></li>
+        </ul>
+      </nav>
+
+      <!-- Main -->
+      <div id="main">
+        <div class="inner">
+          <h1>Waste Your Wedding</h1>
+          <ul class="icons">
+            <li>
+              <a
+              href="https://antoine-foucault.itch.io/waste-your-wedding"
+              target=”_blank”
+              class="icon brands style2 fa-itch-io"
+              ><span class="label">Itch.io</span></a
+              >
+            </li>
+          </ul>
+          <h2>The project</h2>
+          <p>
+            A hungry woman wanders in a wedding venue to eat a gigantic cake.
+            <br>But can she stop her suitors from marrying her along the way?
+            <br>A light-hearted adventure starts!
+          </p>
+          <div class="container"><iframe width="840" height="430" allowfullscreen src="https://www.youtube.com/embed/ETuw3EQKCz0"></iframe>
+          </div>
+          <br><br><br>
+
+          <h2>Context</h2>
+          <div>
+            <p>
+            Used to game jams and short projects, I wanted to challenge myself with a longer solo project and a larger scope. I set a 3-month time limit, working only in my spare time while also doing an internship. My goal was 30 to 60 minutes of high-quality gameplay, and, most importantly, to see the project through.
+            <br><br>This postmortem covers what went right, what went wrong, and what I learned along the way.
+          </p>
+          </div>
+          <br><br><br>
+           <h2>Rushing the concept</h2>
+          <p>
+                My first mistake was rushing the concept. I chose a unique theme (weddings) which I don’t often see in games, especially for a gameplay-heavy game, but I jumped straight into development at the expense of properly defining the project’s pillars and intentions.
+                <br>A week later, I had a working prototype, but the gameplay wasn’t fun and the direction was unclear. I spent valuable time trying to figure out what the game was supposed to be. Eventually, I managed to bounce back by reevaluating my intentions and by prototyping more gameplay, which I'm happy about now.
+                <div class="center">
+                  <img src="../images/wyw_main_mechanic_gif.gif" alt="" class="image" />
+                </div>
+                <p class="center"><i>The final main mechanic: gaining an additional jump when hitting something, for aerial gameplay</i></p>
+                <br><i><u>What I learned:</u> The beginning was tough because I had to find a fun idea from scratch. To gain some time, I started a game idea bank where I keep my concepts, making it easier to pick one when I’m ready for a big project. And most importantly, I relearned the hard way how crucial it is to establish strong pillars and intentions early on to guide every major decision throughout development.</i>
+          </p>
+          <br><br><br>
+
+          <h2>Choosing the right Art Direction</h2>
+          <p>
+            I like to resolve key aspects early on to avoid doubts later in development, and art direction was no exception. This animated mockup was the first thing I created:
+          </p>
+          <div class="center">
+            <img src="../images/wyw_first_gif.gif" alt="" class="image" />
+          </div>
+          <p>With just this, I could better visualize the game’s feel, colors, characters, and scale. I also decided to limit the color palette to just five colors for the entire game, which helped streamline the process. I kept the environment simple to maintain clarity but focused on lively animations.
+            <div class="center">
+              <img src="../images/wyw_palette.png" alt="" class="image" />
+            </div>
+            <p class="center"><i>The final color palette</i></p>
+            <i><u>What I learned:</u> Looking back, the color limitation was one of the best decisions. While it was challenging to make key elements pop, it allowed me to iterate quickly and stopped me from obsessing over colors. Plus, it created a unique visual style that set the game apart from other pixel art games.</i>
+          </p>
+          <br><br><br>
+
+          <h2>Developing a scalable game</h2>
+          <p>
+            For this longer project, I focused on building scalable systems. I aimed to keep the code as generic as possible, relying heavily on a simple OOP principle: composition.
+          </p>
+          <div class="center">
+            <img src="../images/wyw_prefab_orga.png" alt="" class="image" />
+          </div>
+          <p class="center"><i>The structure for an enemy object, with several components attached (in red)</i></p>
+          <p>For example, each enemy had separate scripts for specific functions like health, movement, shooting, and animation. By using composition, I could attach small, independent scripts to objects without dependencies. This allowed me to quickly prototype and iterate on features, since the code was reusable and flexible.
+            <br><br>
+            <i><u>What I learned:</u> As always, reusing code saved me the most time during development. And by keeping my scripts generic, I’ve built an even larger library of reusable code for future projects!</i>
+          </p>
+          <br><br><br>
+
+          <h2>The problematics of a larger project</h2>
+          <p>
+            One of my goals was to have at least 30 minutes of gameplay, which was a first for me as a solo developer. Creating the content for that length wasn’t the hard part, but I definitely underestimated the effort required to elevate such a large amount of content to a high level of quality. The level art, in particular, took much longer than I expected, even with the minimalist style.
+          <br><br>
+            <i><u>What I learned:</u> The more content a game has, the more work it takes to maintain quality. That said, I’m proud I avoided the common pitfall of overscoping in terms of quantity.</i>
+          </p>
+          <br><br><br>
+          
+            <h2>Conclusion</h2>
+            <p>
+              This development was a ride, but I learned a lot and I'm proud to have seen it through to the end. Being a solo dev gave me freedom to make creative decisions and learn new skills (like shaders and music), but it also made everything more time-consuming.
+              <br>Even though I started off on the wrong foot by not clearly defining my intentions, the development remained steady, and I made consistent progress every day, even with limited time.
+              <br><br>It wasn’t the easiest production I’ve worked on, but I’d gladly do it again! The final game is available on <a href="https://antoine-foucault.itch.io/waste-your-wedding" target="”_blank”">itch.io</a>.
+              <div class="center">
+                <img src="../images/wyw_screen.png" alt="" class="image" />
+              </div>
+            </p>
+
+          <div class="center"><a href="../index.html"><h2>Back to Home</h2></a></div>
+          </div>
+	  
+        </div>
+        <!-- Footer -->
+        <footer id="footer">
+          <div class="inner">
+            <section>
+              <h2>Contact</h2>
+              <ul class="icons">
+                <li>
+                  <a
+                    href="mailto:antoine.foucault777@gmail.com"
+                    class="icon solid style2 fa-envelope"
+                    ><span class="label">Email</span></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://antoine-foucault.itch.io/"
+                    class="icon brands style2 fa-itch-io"
+                    target=”_blank”
+                    ><span class="label">Itch.io</span></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://github.com/ToineF"
+                    class="icon brands style2 fa-github"
+                    target=”_blank”
+                    ><span class="label">Github</span></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://www.linkedin.com/in/antoine--foucault"
+                    target=”_blank”
+                    class="icon brands style2 fa-linkedin"
+                    ><span class="label">Linkedin</span></a
+                  >
+                </li>
+              </ul>
+              <ul>
+                <p>antoine.foucault777@gmail.com<br />+33 7 49 93 59 42</p>
+              </ul>
+            </section>
+            <ul class="copyright">
+              <li>&copy; Untitled. All rights reserved</li>
+              <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+            </ul>
+          </div>
+        </footer>      
+
+    <!-- Scripts -->
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/browser.min.js"></script>
+    <script src="../assets/js/breakpoints.min.js"></script>
+    <script src="../assets/js/util.js"></script>
+    <script src="../assets/js/main.js"></script>
+  </body>
+</html>
