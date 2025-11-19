@@ -2726,7 +2726,8 @@ button:disabled,
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   position: relative;
-  margin: -2.5em 0 0 -2.5em;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .tiles article {
@@ -2736,8 +2737,10 @@ button:disabled,
   transition: transform 0.15s ease, opacity 0.15s ease;
   position: relative;
   width: calc(33.33333% - 2.5em);
-  margin: 2.5em 0 0 2.5em;
+  margin-left: auto;
+  margin-right: auto;
 }
+
 
 .tiles article > .image {
   -moz-transition: -moz-transform 0.15s ease;
@@ -2980,6 +2983,16 @@ body.is-touch .tiles article .content {
     width: 100%;
     margin: 1.25em 0 0 0;
   }
+}
+
+.tiles-center {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.tiles-center article {
+  margin-left: 2.5em;
+  margin-right: 2.5em;
 }
 
 /* Header */
