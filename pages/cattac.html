@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+  <head>
+    <title>Portfolio Antoine Foucault</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <noscript
+      ><link rel="stylesheet" href="../assets/css/noscript.css"
+    /></noscript>
+  </head>
+  <body class="is-preload">
+    <!-- Wrapper -->
+    <div id="wrapper">
+      <!-- Header -->
+      <header id="header">
+        <div class="inner">
+          <!-- Logo -->
+          <a href="../index.html" class="logo"
+            ><span class="title">Return to Home</span>
+          </a>
+
+          <!-- Nav -->
+          <nav>
+            <ul>
+              <li><a href="#menu">Menu</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      <!-- Menu -->
+      <nav id="menu">
+        <h2>Menu</h2>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="solo_games.html">Solo Games</a></li>
+          <li><a href="team_games.html">Team Games</a></li>
+          <li><a href="cattac.html">CATTAC</a></li>
+          <li><a href="blown_away.html">Blown Away</a></li>
+          <li>
+            <a href="waste_your_wedding.html">Waste Your Wedding</a>
+          </li>
+          <li><a href="pocket_master.html">The Pocket Master</a></li>
+          <li>
+            <a href="no_birds_in_the_office.html">No Birds in the Office</a>
+          </li>
+          <li><a href="utilities.html">Tools</a></li>
+          <li><a href="rewind.html">Time-Rewind Mechanic</a></li>
+        </ul>
+      </nav>
+
+      <!-- Main -->
+      <div id="main">
+        <div class="inner">
+          <ul class="icons">
+            <li><h1>CATTAC</h1></li>
+            <!-- <li>
+              <a
+                href="https://piktura.itch.io/cattac"
+                target="”_blank”"
+                class="icon brands style2 fa-itch-io"
+                ><span class="label">Itch.io</span></a
+              >
+            </li> -->
+          </ul>
+          <p><b>Made with: </b>Unity</p>
+          <p>Ongoing project scheduled for release in July 2026</p>
+          <hr />
+          <br />
+          <br />
+          <h2>The project</h2>
+          <p>
+            <b>CATTAC</b> is a <b>3D two-player co-op puzzle game</b> featuring <b>two micestadors</b> (mice-conquistadors)<br />disguised as a <b>two-headed divinity</b>.
+            This divinity is worshipped by <b>caztecs</b> (cat-aztecs), whose land the two micestadors explore in search of their lost comrades and the Golden Cheese pieces.
+            <br />The two players are physically linked together by the disguise, forcing them to cooperate even to move.
+          </p>
+          <div class="center">
+            <img src="../images/cattac_key_art.png" alt="" class="image" />
+          </div>
+          <br /><br /><br />
+
+          <h2>Context</h2>
+          <div>
+            <p>
+              This project was developed as a <b>final Master project</b> at
+              <a href="https://www.piktura.fr/" target="”_blank”">Piktura</a>,
+              made in <b>17 months</b> with a team of <b>6 people</b>.
+              <br />
+              <br /><b>Team:</b> <br /><u>Antoine Foucault</u> - Project Manager, Creative Director, Programmer
+              <br /><u>Romain Horrenberger</u> - Game Designer, Level Designer
+              <br /><u>Naomie Halter</u> - Artistic Director, Concept Artist, Key Art
+              <br /><u>Julie Boyaval</u> - Character Artist
+              <br /><u>Mahiedine Boudrissa</u> - Environment Artist, Tech Artist
+              <br /><u>Gaëlle Becel</u> - Props Artist
+            </p>
+          </div>
+          <br /><br /><br />
+          <h2>My role</h2>
+          <p>
+            <u>Project Manager</u> : I was in charge of organizing meetings with my team, planning our tasks and deadlines, and making big decisions when needed.
+            <br /><u>Creative Director</u> : I was the creative director, at the root of the game idea, who <b>created and developed the concept</b>.
+            <br /><u>Programmer</u> : I was <b>the only programmer</b> of the team, my main responsibilities included developing the two-headed character controller and the physical interactive elements.
+          </p>
+          <br /><br /><br />
+
+          <h2>Rope Physics</h2>
+          <p>
+            Since the project's main pillar was to the <b>two-headed character controller</b>, my main focus at the start of the development was to create a <b>robust rope system</b>.
+            <br />This was a great way for me to learn and analyze such a specific and interesting area of game development.
+            <br>The goal was to have two players, each at one end of the rope and able to influence the whole rope's movement.
+          </p>
+          <div class="container">
+            <video controls playsinline autoplay muted loop>
+              <source src="../videos/cattac_rope_2.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <p>
+            Before starting, I decided to <b>separate the physics logic from the visual logic</b> of the rope, which would be two different challenges.
+            My very first approach was a naïve one for rapid-fire prototyping.
+
+            <br><br><b>For the physics</b>, the rope consist of several points in space that each try to move towards one another to ensure the distance between each point stays the same.
+            <br>For this naive approach, I manually overrode the position of each point toward a target destination, using <b>Position Based Dynamics (PBD)</b>.
+            <br>For a first prototype it was enough, but I knew I would had to delve deeper to make a polished character controller, especially since this implementation had a lot of issues (more on that later).
+          </p>
+            <div class="container">
+            <video controls playsinline autoplay muted loop>
+              <source src="../videos/cattac_rope_1.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <p>
+
+            <b>For the visual</b>, my first instinct was to try mesh generation.
+            <br>It would allow me to generate a good-looking mesh to modify based on the rope's points' positions.
+            <br>In the end, the in-game result looked off, so I knew I had to explore other techniques. That said, I really enjoyed learning about mesh generation in Unity!   
+          </p>
+          <div class="container">
+            <video controls playsinline autoplay muted loop>
+              <source src="../videos/cattac_rope_mesh_generation.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="container">
+            <video controls playsinline autoplay muted loop>
+              <source src="../videos/cattac_rope_naive_approach.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <p>
+            The first iteration helped defined the game as a whole, but needed a lot of improvements, such as physical stability, correct collision handling, and a good-looking rope mesh.
+            <br>To ensure the rope physics was as best as possible, I did conducted extensive research on existing implementations, and asked some game developers experienced with physics their go-to approach.
+            <br>
+            <br>This led me to narrow down <b>4 main approaches</b> for the character controller :
+            <ul>
+              <li><b>The default Unity joints</b></li>
+              <p>This one would be simple to implement, handling collisions easily thanks to PhysX, but less flexible for specific implementations.</p>
+              <li><b>Unity's joint system, with collisions separated from the joints</b></li>
+              <p>This approach uses the same principle as the first one, but offers more physical stability but less accurate collisions by separating joints and collisions.</p>
+              <li><b>Delving deeper in PBD</b></li>
+              <p>Using PBD to manually move the points accurately with physically proven formulas would be a long approach to implement, but would give us a very accurate and flexible collision system.</p>
+              <li><b>Continuing using my naïve, manual approach, but with more notions of PBD</b></li>
+              <p>This would allow me to appropriate myself PBD, but with a simpler implementation and a more understandable code architecture</p>
+            </ul>
+            <p>After having quickly prototyped each approach, the one I chose was the very first one: the <b>default Unity joints</b>.
+              <br>Although this approach may feel less technically ambitious from a developer's perspective, I definitively think it was the right choice,
+              since it provided the best balance between quality and development time. 
+              It quickly reassured the team about the technical feasibility of the character controller and allowed me to focus on other aspects of the game.
+            <br>Moreover, this approach allowed for <b>a lot of flexibility and parameters</b> to expose for my game designer, allowing us to make a rope as stiff, as heavy or as elastic as we want.
+            Choosing the default Unity physics solution also meant my game designer and I could use the default Unity components for simple interactions in the project.
+            </p>
+          </p>
+          <div class="container">
+            <video controls playsinline autoplay muted loop>
+              <source src="../videos/cattac_rope_3.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <p>
+            Finally <b>for the rope visual</b>, we decided with our Character Artist to simply <b>make a rope mesh and rig it</b>.
+            <br>From a technical perspective, it made everything easier: Each bone was simply linked to a joint.
+            <br>And from an artistic perspective, it allowed for more creative freedom and technical flexibility for a beautiful render. 
+            <br><br>And finally, with some polish, like a sinusoidal movement to emulate a snake's movement, <b>the controller was done</b>!
+          </p>
+          <div class="container">
+            <video controls playsinline autoplay muted loop>
+              <source src="../videos/cattac_rope_final.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <br /><br /><br />
+
+
+            <h2>Conclusion</h2>
+            <p>
+              Developing this rope-based character controller was a <b>rewarding challenge</b>, and took less time than expected thanks to prioritizing <b>quick-to-implement solutions</b> that help the production cycle.
+              <br>Obviously the controller has still some limitations.
+              For instance, since it relies on multiple SphereCollider linked together, it's possible pass through small gaps.
+              We addressed this by avoiding such obstacles in the level design.
+              <br>Sometimes the collisions can still be wacky, but when handled carefully, they also contributes to the <b>charm of physics-based gameplay</b> without feeling too buggy for the players.
+            </p>
+            <br /><br /><br />
+            
+            <div class="center">
+              <img src="../images/cattac_teaser.png" alt="" class="image" />
+            </div>
+            <p class="center">The project is still ongoing, with a full released for July 2026.</p>
+            
+            <br /><br /><br />
+          <div class="center">
+            <a href="../index.html"><h2>Back to Home</h2></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer id="footer">
+        <div class="inner">
+          <section>
+            <h2>Contact</h2>
+            <ul class="icons">
+              <li>
+                <a
+                  href="mailto:antoine.foucault777@gmail.com"
+                  class="icon solid style2 fa-envelope"
+                  ><span class="label">Email</span></a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://antoine-foucault.itch.io/"
+                  class="icon brands style2 fa-itch-io"
+                  target="”_blank”"
+                  ><span class="label">Itch.io</span></a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://github.com/ToineF"
+                  class="icon brands style2 fa-github"
+                  target="”_blank”"
+                  ><span class="label">Github</span></a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.linkedin.com/in/antoine--foucault"
+                  target="”_blank”"
+                  class="icon brands style2 fa-linkedin"
+                  ><span class="label">Linkedin</span></a
+                >
+              </li>
+            </ul>
+            <ul>
+              <p>antoine.foucault777@gmail.com</p>
+            </ul>
+          </section>
+          <ul class="copyright">
+            <li>&copy; Untitled. All rights reserved</li>
+            <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+          </ul>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/browser.min.js"></script>
+    <script src="../assets/js/breakpoints.min.js"></script>
+    <script src="../assets/js/util.js"></script>
+    <script src="../assets/js/main.js"></script>
+  </body>
+</html>
