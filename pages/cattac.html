@@ -25,7 +25,7 @@
         <div class="inner">
           <!-- Logo -->
           <a href="../index.html" class="logo"
-            ><span class="title">Return to Home</span>
+            ><span class="title">&larr; Return to Home</span>
           </a>
 
           <!-- Nav -->
@@ -44,17 +44,20 @@
           <li><a href="../index.html">Home</a></li>
           <li><a href="solo_games.html">Solo Games</a></li>
           <li><a href="team_games.html">Team Games</a></li>
-          <li><a href="cattac.html">CATTAC</a></li>
           <li><a href="blown_away.html">Blown Away</a></li>
+          <li><a href="cattac.html">CATTAC</a></li>
           <li>
             <a href="waste_your_wedding.html">Waste Your Wedding</a>
           </li>
           <li><a href="pocket_master.html">The Pocket Master</a></li>
+          <li><a href="rewind.html">Time-Rewind Mechanic</a></li>
+          <li><a href="wargroove_recreation.html">Wargroove Recreation</a></li>
           <li>
-            <a href="no_birds_in_the_office.html">No Birds in the Office</a>
+            <a href="no_birds_in_the_office.html"
+              >No Birds in the Office</a
+            >
           </li>
           <li><a href="utilities.html">Tools</a></li>
-          <li><a href="rewind.html">Time-Rewind Mechanic</a></li>
         </ul>
       </nav>
 
@@ -126,7 +129,7 @@
           </div>
           <p>
             Before starting, I decided to <b>separate the physics logic from the visual logic</b> of the rope, which would be two different challenges.
-            My very first approach was a naïve one for rapid-fire prototyping.
+            My very first approach was a naive one for rapid-fire prototyping.
 
             <br><br><b>For the physics</b>, the rope consist of several points in space that each try to move towards one another to ensure the distance between each point stays the same.
             <br>For this naive approach, I manually overrode the position of each point toward a target destination, using <b>Position Based Dynamics (PBD)</b>.
@@ -168,7 +171,7 @@
               <p>This approach uses the same principle as the first one, but offers more physical stability but less accurate collisions by separating joints and collisions.</p>
               <li><b>Delving deeper in PBD</b></li>
               <p>Using PBD to manually move the points accurately with physically proven formulas would be a long approach to implement, but would give us a very accurate and flexible collision system.</p>
-              <li><b>Continuing using my naïve, manual approach, but with more notions of PBD</b></li>
+              <li><b>Continuing using my naive, manual approach, but with more notions of PBD</b></li>
               <p>This would allow me to appropriate myself PBD, but with a simpler implementation and a more understandable code architecture</p>
             </ul>
             <p>After having quickly prototyped each approach, the one I chose was the very first one: the <b>default Unity joints</b>.

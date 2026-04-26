@@ -25,7 +25,7 @@
         <div class="inner">
           <!-- Logo -->
           <a href="../index.html" class="logo"
-            ><span class="title">Return to Home</span>
+            ><span class="title">&larr; Return to Home</span>
           </a>
 
           <!-- Nav -->
@@ -37,26 +37,27 @@
         </div>
       </header>
 
-<!-- Menu -->
+      <!-- Menu -->
       <nav id="menu">
         <h2>Menu</h2>
         <ul>
           <li><a href="../index.html">Home</a></li>
           <li><a href="solo_games.html">Solo Games</a></li>
           <li><a href="team_games.html">Team Games</a></li>
-          <li><a href="cattac.html">CATTAC</a></li>
           <li><a href="blown_away.html">Blown Away</a></li>
+          <li><a href="cattac.html">CATTAC</a></li>
           <li>
             <a href="waste_your_wedding.html">Waste Your Wedding</a>
           </li>
           <li><a href="pocket_master.html">The Pocket Master</a></li>
+          <li><a href="rewind.html">Time-Rewind Mechanic</a></li>
+          <li><a href="wargroove_recreation.html">Wargroove Recreation</a></li>
           <li>
             <a href="no_birds_in_the_office.html"
               >No Birds in the Office</a
             >
           </li>
           <li><a href="utilities.html">Tools</a></li>
-          <li><a href="rewind.html">Time-Rewind Mechanic</a></li>
         </ul>
       </nav>
 
@@ -96,7 +97,7 @@
             aspects:
             <ul>
               <li><u>Determinism</u> : Everything should behave the same way every time we rewind time.
-              <li><u>Optimisation</u> : The solution should not cause significant performance issues.
+              <li><u>Optimization</u> : The solution should not cause significant performance issues.
               <li><u>Code Structure</u> : Since the system wasn't originally built for this mechanic, the implementation needed to be layered on top of the existing systems without altering them.
             </ul>
           </p>
@@ -114,7 +115,7 @@
           </div>
           <p class="center">A figure of a recorded object, with a position (red) and color (blue), which are stored in an array (purple).</p>
           <p>
-            This theoric system is generic enough that it can be applied to most game engines with very little limitations.
+            This theoretical system is generic enough that it can be applied to most game engines with very little limitations.
             <br>That's why I tried to prototype it using <b>Godot</b>, to prove this point, while studying the differences between Godot and Unity (which I'm more familiar with), especially from an optimisation and code structure standpoint.
           </p>
           <br /><br /><br />
@@ -180,10 +181,10 @@
           <h2>Going further</h2>
           <p>
             Making this mechanic is great, but now there are several important points to consider.
-            <br>The first, and the biggest issue is the <b>optimisation</b>.
+            <br>The first, and the biggest issue is the <b>optimization</b>.
             <br>For games with few objects in the scene at once, this is fine in itself.
             <br>But as it is, this naive approach could cause performance issue with a lot more objects in the scene.
-            <br>There are several ways to easily optimise this mechanic, like by not recording at every frame:
+            <br>There are several ways to easily optimize this mechanic, like by not recording at every frame:
             <ul>
               <li><u>Less frequent recording</u> : We don't need to record every frame. Instead, we can record every other frame and interpolate the values to create the illusion that every frame was recorded.
               <li><u>Recording only when the data changes</u> : Reduce greatly the recording information for objects that don't change or move often.
@@ -200,14 +201,14 @@
           <br>
           <p>Another important aspect to consider I presented at the start that I still haven't touched on is <b>determinism</b>.
           <br>It's critical that rewinding doesn't alter how the game plays when time resumes.
-          <br>To start with, we can <b>record everything in the physics update</b>, which is frame rate-independant. (<code>FixedUpdate</code> in Unity, <code>_physics_process</code> in Godot)
+          <br>To start with, we can <b>record everything in the physics update</b>, which is frame rate-independent. (<code>FixedUpdate</code> in Unity, <code>_physics_process</code> in Godot)
           <br>If we want to go further, it's important to also keep in mind that moving objects using the physics engine is often not deterministic, so small changes can affect objects' movements. 
           <br>In this case, the provided code was already deterministic, so it wasn't an issue, but it's something to watch out for in more complex scenarios.
         </p>
           <br /><br /><br />
           <h2>Result</h2>
           <p>To conclude, this project was very informative to me, allowing me to make this mechanic from scratch and to attach it to an existing project.
-          <br>Thinking about both the optimisation, determinism and code structure at the same time was a fun challenge too!
+          <br>Thinking about both the optimization, determinism and code structure at the same time was a fun challenge too!
           <br>Finally, making this in Godot and comparing it to Unity was educational, allowing me to learn more of the Godot engine (profiler, shader, audio bus...).
           <br>Overall, I'm proud of the result:
           </p>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+  <head>
+    <title>Portefolio Antoine Foucault</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <noscript
+      ><link rel="stylesheet" href="../assets/css/noscript.css"
+    /></noscript>
+  </head>
+  <body class="is-preload">
+    <!-- Wrapper -->
+    <div id="wrapper">
+      <!-- Header -->
+      <header id="header">
+        <div class="inner">
+          <!-- Logo -->
+          <a href="../index.html" class="logo"
+            ><span class="title">&larr; Return to Home</span>
+          </a>
+
+          <!-- Nav -->
+          <nav>
+            <ul>
+              <li><a href="#menu">Menu</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      <!-- Menu -->
+      <nav id="menu">
+        <h2>Menu</h2>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="solo_games.html">Solo Games</a></li>
+          <li><a href="team_games.html">Team Games</a></li>
+          <li><a href="blown_away.html">Blown Away</a></li>
+          <li><a href="cattac.html">CATTAC</a></li>
+          <li>
+            <a href="waste_your_wedding.html">Waste Your Wedding</a>
+          </li>
+          <li><a href="pocket_master.html">The Pocket Master</a></li>
+          <li><a href="rewind.html">Time-Rewind Mechanic</a></li>
+          <li><a href="wargroove_recreation.html">Wargroove Recreation</a></li>
+          <li>
+            <a href="no_birds_in_the_office.html"
+              >No Birds in the Office</a
+            >
+          </li>
+          <li><a href="utilities.html">Tools</a></li>
+        </ul>
+      </nav>
+
+      <!-- Main -->
+      <div id="main">
+        <div class="inner">
+          <h1>Wargroove Recreation</h1>
+          <p><b>Made with: </b>Godot</p>
+          <hr />
+          <br />
+          <br />
+          <h2>The project</h2>
+          <p>The goal of this project was to <b>recreate the core mechanics of <i>Wargroove</i></b>, a tactical RPG, <b>with Godot</b>.
+          <br>My end-goal was to build a <b>test level with a limited feature</b> set (movements and attacks only), but <b>with high quality</b>, and three distinct units.
+          <br>As I'm more experience with Unity, this project was a good opportunity to challenge myself on two areas:
+          <br>
+            <ul>
+              <li><b>Improve my Godot skills</b> with a genre that requires a solid and <b>well-structured code architecture</b></li>
+              <li><b>Analyze <i>Wargroove</i></b> and faithfully <b>reproduce its main mechanics</b> and technical choices.</li>
+            </ul>
+          </p>
+          <div class="container">
+            <video controls playsinline muted autoplay loop>
+              <source
+              src="../videos/wargroove_result.mp4"
+              type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          
+          <h2>Overview</h2>
+         <p><br><i>Wargroove</i> is a tactical RPG developed by <i>Chucklefish</i>, where a unit's health affects its damage output.
+           <br>I chose it for its <b>minimalistic design and its well-documented rules</b>, making it ideal to quickly reproduce its core gameplay loop.
+          <br>
+          <br>From the start, I knew <b>maintaining a clear structure</b> was essential.
+          <br>To achieve this, I played the first levels of <i>Wargroove</i>, <b>analyzed how everything worked and took detailed notes</b> (e.g.: "What happens when I click this tile at that time?" "What does right click do when this unit is selected?")
+          <br>These notes allowed me to identify all the required interactions before even writing any code, and could design my architecture accordingly.
+          <br>
+          <br>To improve readability and debuggability, I <b>separated the game flow in states</b>, each in its own class.</p>
+          <div class="center">
+            <img src="../images/wargroove_statemachine.png" alt="" class="image" />
+          </div>
+          <p>As I was still getting familiar with Godot, I also best practices for developing tactical RPGs with the engine.
+            <br>This led me to discover the <code>AStarGrid2D</code> class, which <b>handles the A* pathfinding logic</b>, saving me development time and providing a higher level of abstraction.
+            <br>There was only one case where I wanted more control over the pathfinding logic, but I found a workaround. Overall, it proved far more beneficial than limiting.
+          </p>
+          
+          <div class="container">
+            <video controls playsinline muted autoplay loop>
+              <source
+              src="../videos/wargroove_AStar.mp4"
+              type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <br><br><br>
+
+          <h2>Organization</h2>
+          <p>I know one of my current weaknesses as a developer is overthinking, so I decided to try to <b>break down</b> the project <b>into very small tasks</b>, and focused on completing one at a time.
+            <br>Because each task was simple, I avoided overthinking while maintaining a strong sense of progress.
+            <br>
+            <br>I also tend to polish too early, so I also deliberately built a rough, unpolished prototype first, to <b>prioritize functionality</b> before visuals.
+            <br>As a result, development felt faster, and <b>the core loop was done quickly, without overthinking</b>.
+          </p>
+          <div class="center">
+            <img src="../images/wargroove_prototype.png" alt="" class="image" />
+          </div>
+          <p class="center">An image of my prototype, purposefully ugly at that point</p>
+          <br><br><br>
+
+          <h2>Polish & Feedbacks</h2>
+          <p>Once the game loop was functional, it was time to get started on visuals and feedbacks!
+            <br>I started by using an asset pack from <a href="https://pixelfrog-assets.itch.io/tiny-swords" target="_blank">Pixelfrog</a> to improve the game's visual quality.
+          </p>
+          <div class="center">
+            <img src="../images/wargroove_assetPackIntegration.png" alt="" class="image" />
+          </div>
+          <p>I took the time to polish every inch of the game, with <b>animations, VFX, SFX, screen shake</b>, to bring the experience closer to a finished project, and not just a prototype.</p>
+          <p>For instance, to add more life to the scene, I added ambient elements like birds flying around.
+            <br>So I challenged myself to <b>create a custom bird animation</b>, respecting the asset pack's style.
+          </p>
+          <div class="center">
+            <img src="../images/wargroove_birdsEvolution.gif" alt="" class="image" />
+          </div>
+          <p class="center">(The versioning of the bird's animation, from the rough placeholder to the final asset)</p>
+          <br /><br /><br />
+
+          <h2>AI</h2>
+          <p>Since tactical RPGs typically oppose two factions, <b>implementing enemy AI</b> was essential.
+            <br>There are a lot of ways to make AI behaviors for tactical RPGs, but I knew <i>Wargroove</i> uses a <b>heatmap system</b>, where <b>each tile is scored</b> and decisions are based on those values.
+            <br>I built my own implementation of the heatmap system, taking into account factors such as:
+            <ul>
+              <li>Can the unit reach/attack/kill another?</li>
+              <li>Is the unit in danger of being attacked/killed on this tile?</li>
+              <li>Is the unit protected by nearby allies on this tile?</li>
+              <li>How far away is the ideal attack target?</li>
+            </ul>
+            <br>I then <b>assigned points to each tiles based on these factors</b>. For instance, a tile that allows a kill is rated higher than one that allows only an attack.
+            <br>I also separated the "target tile" and the "actual tile", so the AI can plan ahead even when it can't reach an enemy in one turn.
+            <br>
+            <br>Balancing was challenging, but I think I managed to create a <b>cohesive AI that takes natural decisions</b>, simultaneously trying to <b>attack enemies</b> and taking care of themselves by <b>avoiding death</b>.
+            <br>For a full game, there would still be room for improvement, like by adding more parameters, refining balance, orplanning a strategy several turns ahead.
+          </p>
+          <div class="center">
+            <img src="../images/wargroove_ai_heatmap.png" alt="" class="image" />
+          </div>
+          <p class="center">The heatmap visualization of one AI (the target tile in bright yellow and the actual tile in bright red)</p>
+          <br /><br /><br />
+
+
+          <h2>Conclusion</h2>
+          <p>This project helped me <b>deepen my understanding of both Godot and Tactical RPGs</b> implementation.
+            <br>Analyzing an existing game as if following design instructions was also a valuable learning experience.
+            <br>
+            <br>The result has still has opportunities for growth, whether by polishing even further or by adding other essential mechanics to <i>Wargroove</i>, like captures, critical hits or weather.
+            <br><br>Finally, adopting a small tasks workflow and separating the core loop from the polish allowed me to be significantly more efficient.
+            <br><br>Here's the final result:
+          </p>
+          <div class="container">
+            <video controls playsinline muted autoplay loop>
+              <source
+              src="../videos/wargroove_result.mp4"
+              type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <br /><br /><br />
+          <div class="center">
+            <a href="../index.html"><h2>Back to Home</h2></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer id="footer">
+        <div class="inner">
+          <section>
+            <h2>Contact</h2>
+            <ul class="icons">
+              <li>
+                <a
+                  href="mailto:antoine.foucault777@gmail.com"
+                  class="icon solid style2 fa-envelope"
+                  ><span class="label">Email</span></a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://antoine-foucault.itch.io/"
+                  class="icon brands style2 fa-itch-io"
+                  target="”_blank”"
+                  ><span class="label">Itch.io</span></a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://github.com/ToineF"
+                  class="icon brands style2 fa-github"
+                  target="”_blank”"
+                  ><span class="label">Github</span></a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.linkedin.com/in/antoine--foucault"
+                  target="”_blank”"
+                  class="icon brands style2 fa-linkedin"
+                  ><span class="label">Linkedin</span></a
+                >
+              </li>
+            </ul>
+            <ul>
+              <p>antoine.foucault777@gmail.com</p>
+            </ul>
+          </section>
+          <ul class="copyright">
+            <li>&copy; Untitled. All rights reserved</li>
+            <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+          </ul>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/browser.min.js"></script>
+    <script src="../assets/js/breakpoints.min.js"></script>
+    <script src="../assets/js/util.js"></script>
+    <script src="../assets/js/main.js"></script>
+  </body>
+</html>
