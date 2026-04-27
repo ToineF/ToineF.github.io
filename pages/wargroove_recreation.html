@@ -101,7 +101,7 @@
           <div class="center">
             <img src="../images/wargroove_statemachine.png" alt="" class="image" />
           </div>
-          <p>As I was still getting familiar with Godot, I also best practices for developing tactical RPGs with the engine.
+          <p>As I was still getting familiar with Godot, I also looked up best practices for developing tactical RPGs with the engine.
             <br>This led me to discover the <code>AStarGrid2D</code> class, which <b>handles the A* pathfinding logic</b>, saving me development time and providing a higher level of abstraction.
             <br>There was only one case where I wanted more control over the pathfinding logic, but I found a workaround. Overall, it proved far more beneficial than limiting.
           </p>
@@ -130,6 +130,29 @@
           <p class="center">An image of my prototype, purposefully ugly at that point</p>
           <br><br><br>
 
+          <h2>AI</h2>
+          <p>Since tactical RPGs typically oppose two factions, <b>implementing enemy AI</b> was essential.
+            <br>There are a lot of ways to make AI behaviors for tactical RPGs, but I knew <i>Wargroove</i> uses a <b>heatmap system</b>, where <b>each tile is scored</b> and decisions are based on those values.
+            <br>I built my own implementation of the heatmap system, taking into account factors such as:
+            <ul>
+              <li>Can the unit reach/attack/kill another?</li>
+              <li>Is the unit in danger of being attacked/killed on this tile?</li>
+              <li>Is the unit protected by nearby allies on this tile?</li>
+              <li>How far away is the ideal attack target?</li>
+            </ul>
+            <br>I then <b>assigned points to each tiles based on these factors</b>. For instance, a tile that allows a kill is rated higher than one that allows only an attack.
+            <br>I also separated the "target tile" and the "actual tile", so the AI can plan ahead even when it can't reach an enemy in one turn.
+            <br>
+            <br>Balancing was challenging, but I think I managed to create a <b>cohesive AI that takes natural decisions</b>, simultaneously trying to <b>attack enemies</b> and taking care of themselves by <b>avoiding death</b>.
+            <br>For a full game, there would still be room for improvement, like by adding more parameters, refining balance, or planning a strategy several turns ahead.
+          </p>
+          <div class="center">
+            <img src="../images/wargroove_ai_heatmap.png" alt="" class="image" />
+          </div>
+          <p class="center">The heatmap visualization of one AI (the target tile in bright yellow and the actual tile in bright red)</p>
+          <br /><br /><br />
+
+
           <h2>Polish & Feedbacks</h2>
           <p>Once the game loop was functional, it was time to get started on visuals and feedbacks!
             <br>I started by using an asset pack from <a href="https://pixelfrog-assets.itch.io/tiny-swords" target="_blank">Pixelfrog</a> to improve the game's visual quality.
@@ -145,28 +168,6 @@
             <img src="../images/wargroove_birdsEvolution.gif" alt="" class="image" />
           </div>
           <p class="center">(The versioning of the bird's animation, from the rough placeholder to the final asset)</p>
-          <br /><br /><br />
-
-          <h2>AI</h2>
-          <p>Since tactical RPGs typically oppose two factions, <b>implementing enemy AI</b> was essential.
-            <br>There are a lot of ways to make AI behaviors for tactical RPGs, but I knew <i>Wargroove</i> uses a <b>heatmap system</b>, where <b>each tile is scored</b> and decisions are based on those values.
-            <br>I built my own implementation of the heatmap system, taking into account factors such as:
-            <ul>
-              <li>Can the unit reach/attack/kill another?</li>
-              <li>Is the unit in danger of being attacked/killed on this tile?</li>
-              <li>Is the unit protected by nearby allies on this tile?</li>
-              <li>How far away is the ideal attack target?</li>
-            </ul>
-            <br>I then <b>assigned points to each tiles based on these factors</b>. For instance, a tile that allows a kill is rated higher than one that allows only an attack.
-            <br>I also separated the "target tile" and the "actual tile", so the AI can plan ahead even when it can't reach an enemy in one turn.
-            <br>
-            <br>Balancing was challenging, but I think I managed to create a <b>cohesive AI that takes natural decisions</b>, simultaneously trying to <b>attack enemies</b> and taking care of themselves by <b>avoiding death</b>.
-            <br>For a full game, there would still be room for improvement, like by adding more parameters, refining balance, orplanning a strategy several turns ahead.
-          </p>
-          <div class="center">
-            <img src="../images/wargroove_ai_heatmap.png" alt="" class="image" />
-          </div>
-          <p class="center">The heatmap visualization of one AI (the target tile in bright yellow and the actual tile in bright red)</p>
           <br /><br /><br />
 
 
